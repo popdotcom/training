@@ -1,32 +1,25 @@
-const pet = new Array
-(
-    {
-        id: 1,
-        name: 'chó',
-        available: true
-    },
-    {
-        id: 2,
-        name: 'mèo',
-        available: true
-    } ,
-    {
-        id: 3,
-        name: 'sneak',
-        available: false
-    }
-)
+var json = require('./listpet.json')
+var fs = require('fs')
 
 module.exports = function (req, res) {
-    // var info =''
-    // for(var i = 0;i<pet.length;i++)
-    // {
-    //     info +=`
-    //     id: ${pet[i].id} <br/>
-    //     name: ${pet[i].name} <br/>
-    //     available: ${pet[i].available} <br/>
-    //     `
-    // }
-    var myJson = JSON.stringify(pet)
-    res.redirect('/detail?x=' + myJson);
-  }
+    var info ='';
+    fs.readFile('listpet.json',function (err, data){
+        var jsonData = JSON.parse(data)
+        var listPet = jsonData.listPet
+        var info =''
+    for(var i = 0;i<listPet.length;i++)
+    {
+        if(listPet[i].available == true){
+            var avail = 'still have'
+        } else {
+            var avail = 'out of pet'
+        }
+        info +=`
+        name: ${listPet[i].name} <br/>
+        available: ${avail} <br/>
+        <br/>
+        `
+    }
+    res.send(info)
+    })
+}

@@ -5,10 +5,9 @@ const port = 3000
 
 app.get('/', require('./home.js'))
 
-app.get('/detail', function(req, res) {
-    var detail = req.query.x;
-    res.send(detail)
-})
+app.get('/detail/:id', require('./detail.js'))
+
+app.get('/add',require('./addpet.js'))
 
 app.listen(port, () => {
   console.log(`http://localhost:${port}`)
