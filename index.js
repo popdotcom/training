@@ -9,6 +9,10 @@ app.get('/detail/:id', require('./detail.js'))
 
 app.get('/add',require('./addpet.js'))
 
+app.get('/fix/:id',require('./fix.js'))
+
+app.get('/delete/:id',require('./delete.js'))
+
 app.listen(port, () => {
   console.log(`http://localhost:${port}`)
 })
