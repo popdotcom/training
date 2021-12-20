@@ -1,20 +1,17 @@
 const mongoose = require('mongoose');
-
-const petSchema = mongoose.Schema({
+const customer = mongoose.Schema({
     _id: Number,
     name: {
         type: String,
         required: true
     },
-    available: {
-        type: Number,
+    address:{
+        type: String,
         required: true
     },
-    detail: {
+    phoneNumber:{
         type: String,
         required: true
     }
 })
-
-module.exports = mongoose.model('pet', petSchema);
-
+module.exports = mongoose.model('customerSchema',customer)

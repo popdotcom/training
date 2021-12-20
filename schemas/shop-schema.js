@@ -1,20 +1,15 @@
 const mongoose = require('mongoose');
 
-const petSchema = mongoose.Schema({
+const shopSchema = mongoose.Schema({
     _id: Number,
     name: {
         type: String,
         required: true
     },
-    available: {
-        type: Number,
-        required: true
-    },
-    detail: {
+    address: {
         type: String,
         required: true
     }
 })
 
-module.exports = mongoose.model('pet', petSchema);
-
+module.exports = mongoose.model('petShop',shopSchema)
